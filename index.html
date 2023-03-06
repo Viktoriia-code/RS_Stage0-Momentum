@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="assets/favicon.ico" rel="shortcut icon" />
+  <link rel="stylesheet" href="css/owfont-regular.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <title>momentum</title>
+</head>
+<body>
+  <header class="header">
+    <div class="player" id="audio-player-container">
+      <marquee direction="left" scrollamount="3" class="song-name">Aqua Caelestis</marquee>
+      <div class="song-time">
+        <div class="current" id="current-time">0:00</div>
+        <div class="length"></div>
+      </div>
+      <!-- Progress -->
+      <input class="timeline-slider" type="range" id="seek-slider" max="100" value="0">
+      <!-- progress -->
+      <!-- Volume -->
+      <div class="volume-container">
+        <div class="volume icono-volumeMedium" id="mute-icon"></div>
+        <input class="volume-slider" type="range" id="volume-slider" max="100" value="75">
+        <output id="volume-output">75</output>
+      </div>
+      <!-- volume -->
+      <div class="player-controls">
+        <button class="play-prev player-icon"></button>
+        <button class="play player-icon"></button>
+        <button class="play-next player-icon"></button>
+      </div>
+      <ul class="play-list"></ul>
+    </div>
+    <div class="weather">
+      <input type="text" class="city" placeholder="[Enter city]" />
+      <i class="weather-icon owf"></i>
+      <div class="weather-error"></div>
+      <div class="description-container">
+        <span class="temperature"></span>
+        <span class="weather-description"></span>
+      </div>
+      <div class="wind"></div>
+      <div class="humidity"></div>
+    </div>
+  </header>
+  <main class="main">
+    <div class="slider-icons">
+      <button class="slide-prev slider-icon"></button>
+      <button class="slide-next slider-icon"></button>
+    </div>
+    <time class="time"></time>
+    <date class="date"></date>
+    <div class="greeting-container">
+      <span class="greeting"></span>
+      <input type="text" class="name" placeholder="[Enter name]" />
+    </div>
+  </main>
+  <footer class="footer">
+    <div>
+      <button class="settings-toggler"></button>
+      <div class="sign">
+        © 2023 by Viktoriia Beloborodova
+        <a href="https://github.com/Viktoriia-code" target="_blank" rel="noopener noreferrer">
+          <img src="./assets/icons/github.png" alt="RS School logo" width="25">
+        </a>
+      </div>
+      <div class="setting-container">
+        <div class="lang-label setting-label">Language</div>
+        <input type="radio" value="eng" class="lang" id="eng" name="lang"><label for="eng">English</label>
+        <input type="radio" value="ru" class="lang" id="ru" name="lang"><label for="ru">Русский</label>
+        <hr>
+        <div class="bg-label setting-label">Background source</div>
+        <input type="radio" value="GitHub" class="bgSource" name="bgSource" id="GitHub"><label for="GitHub">GitHub</label>
+        <input type="radio" value="UnsplashAPI" class="bgSource" name="bgSource" id="UnsplashAPI"><label for="UnsplashAPI">Unsplash API</label>
+        <input type="radio" value="FlickrAPI" class="bgSource" name="bgSource" id="FlickrAPI"><label for="FlickrAPI">Flickr API</label>
+        <hr>
+        <div class="bgTag-label setting-label">Tags for background picture</div>
+        <input type="radio" value="nature" class="bgTag" name="bgTag" id="nature"><label for="nature" id="natureTagLB">Nature</label>
+        <input type="radio" value="cats" class="bgTag" name="bgTag" id="cats"><label for="cats" id="catsTagLB">Cats</label>
+        <input type="radio" value="dogs" class="bgTag" name="bgTag" id="dogs"><label for="dogs" id="dogsTagLB">Dogs</label>
+        <hr>
+        <div class="block-label setting-label">Blocks</div>
+        <input type="checkbox" class="block-visibility" name="" id="time-block" value="time-block"><label for="time-block" id="time-blockLB">Time</label>
+        <input type="checkbox" class="block-visibility" name="" id="date-block"><label for="date-block" id="date-blockLB">Date</label>
+        <input type="checkbox" class="block-visibility" name="" id="greeting-block"><label for="greeting-block" id="greeting-blockLB">Greeting</label>
+        <input type="checkbox" class="block-visibility" name="" id="quote-block"><label for="quote-block" id="quote-blockLB">Quote</label><br>
+        <input type="checkbox" class="block-visibility" name="" id="weather-block"><label for="weather-block" id="weather-blockLB">Weather</label>
+        <input type="checkbox" class="block-visibility" name="" id="player-block"><label for="player-block" id="player-blockLB">Player</label>
+        <input type="checkbox" class="block-visibility" name="" id="todo-block"><label for="todo-block" id="todo-blockLB">To do</label>
+      </div>
+    </div>
+    <div class="quote-container">
+      <button class="change-quote"></button>
+      <div>
+        <div class="quote"></div>
+        <div class="author"></div>
+      </div>
+    </div>
+    <div class="todo-container">
+      <button class="todo-toggler"></button>
+      <div class="todo">
+        <!-- Select task group -->
+        <div class="todo-select" id="todo-select">
+          <!-- Кнопка для открытия выпадающего списка -->
+          <button type="button" class="todo-select__toggle" data-id="inbox-task" name="car" data-value="inbox-task" data-select="toggle" data-index="0">Inbox</button>
+          <!-- Выпадающий список -->
+          <div class="todo-select__dropdown">
+            <ul class="todo-select__options">
+              <li class="todo-select__option" data-id="inbox-task" data-select="option" data-value="Inbox" data-index="0">Inbox</li>
+              <li class="todo-select__option" data-id="today-task" data-select="option" data-value="Today" data-index="1">Today</li>
+              <li class="todo-select__option" data-id="done-task" data-select="option" data-value="Done" data-index="2">Done</li>
+            </ul>
+          </div>
+        </div>
+        <!-- select task group -->
+        <ul class="todo-list" id="task-list"></ul>
+        <div class="newtask-container">
+          <input id="new-task" class="new-task" type="text" placeholder="New Todo to Inbox">
+          <div class="add-task" id="add-task"></div>
+        </div>
+      </div>
+    </div>
+    <div class="rs-logo">
+      <a href="https://rs.school/js/" target="_blank" rel="noopener noreferrer">
+        <img src="./assets/icons/rs_school_js.svg" alt="RS School logo" width="90">
+      </a>
+    </div>
+  </footer>
+  <script type="module" src="js/script.js"></script>
+  <script type="module" src="js/audioPlayer.js"></script>
+</body>
+</html>
